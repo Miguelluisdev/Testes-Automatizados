@@ -1,21 +1,22 @@
 describe("Cenário Alternativo: Nenhum tipo de licença disponível", () => {
   beforeEach(() => {
-    cy.login(); // comando customizado
+    cy.login(); 
     cy.contains("Leave").should("be.visible").click();
     cy.contains("Apply").should("be.visible").click();
     cy.url().should("include", "/leave/applyLeave");
   });
+
+ 
 
   it("Deve exibir mensagem informando que não há tipos de licença com saldo disponível", () => {
     cy.contains("No Leave Types with Leave Balance")
       .should("be.visible")
       .and("have.text", "No Leave Types with Leave Balance");
 
-    // Valida que o formulário não é exibido
+
     cy.get(".oxd-form").should("not.exist");
   });
 });
-
 
 // describe("Cenário 03: Solicitação e gerenciamento de férias.", () => {
 //   beforeEach(() => {
@@ -52,8 +53,6 @@ describe("Cenário Alternativo: Nenhum tipo de licença disponível", () => {
 //       .last()
 //       .invoke("val", "2025-18-07")
 //       .trigger("input");
-      
-  
 
 //     cy.get(".oxd-textarea").type("testando digitando");
 
@@ -62,7 +61,6 @@ describe("Cenário Alternativo: Nenhum tipo de licença disponível", () => {
 //     cy.get('.oxd-toast-container').should('be.visible')
 
 //     cy.contains('My Leave').click('')
-
 
 //     cy.get(':nth-child(1) > .oxd-table-row > :nth-child(4) > div').should('be.visible')
 //   });
