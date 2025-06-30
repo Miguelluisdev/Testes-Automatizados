@@ -37,3 +37,14 @@ Cypress.Commands.add("login", () => {
     "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index"
   );
 });
+
+Cypress.Commands.add("verificarDisponibilidade", () => {
+  cy.request({
+    url: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    failOnStatusCode: false
+  }).then((res) => {
+    if (res.status !== 200) {
+      throw new Error("🛑 OrangeHRM fora do ar ou indisponível.");
+    }
+  });
+});
