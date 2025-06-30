@@ -5,6 +5,13 @@ describe("Cenário 01: Login na plataforma", () => {
     );
   });
 
+ after(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.log("🧹 Cookies e Local Storage limpos após todos os testes.");
+  });
+
+
   it("Login com as credenciais válidas.", () => {
     cy.get('input[name="username"]').type("Admin");
     cy.get('input[name="password"]').type("admin123");
@@ -45,4 +52,6 @@ describe("Cenário 01: Login na plataforma", () => {
       .should("be.visible")
       .and("contain", "Required");
   });
+
+  
 });

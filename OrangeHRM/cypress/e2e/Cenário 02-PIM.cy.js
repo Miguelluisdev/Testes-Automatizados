@@ -3,6 +3,12 @@ describe("Cenário 02: Gestão de funcionários via módulo PIM", () => {
     cy.login();
   });
 
+  after(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.log("🧹 Cookies e Local Storage limpos após todos os testes.");
+  });
+
   it("Adicionar novo funcionário com dados válidos", () => {
     cy.contains("PIM").should("be.visible").click();
 
