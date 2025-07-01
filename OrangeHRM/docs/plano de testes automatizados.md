@@ -110,12 +110,12 @@ Automatizar os principais fluxos funcionais do sistema OrangeHRM Demo para garan
 
 | Código RF | Módulo                | Status           |
 | --------- | --------------------- | ---------------- |
-| RF01      | Login                 | 🔜 A implementar  |
+| RF01      | Login                 |  Implementado  |
 | RF02      | Dashboard             | 🔜 A implementar  |
-| RF03      | PIM - Funcionários    | 🔜 A implementar  |
-| RF04      | Férias (Leave)        |🔜 A implementar  |
-| RF05      | Recrutamento          | 🔜 A implementar |
-| RF06      | Administração (Admin) | 🔜 A implementar |
+| RF03      | PIM - Funcionários    |   Implementado  |
+| RF04      | Férias (Leave)        | Implementado |
+| RF05      | Recrutamento          |  Implementado  |
+| RF06      | Administração (Admin) |  Implementado  |
 
 ---
 
