@@ -1,8 +1,11 @@
 import SignUpPage from "../support/pageObjects/CT_RF02-Page";
+import { faker } from "@faker-js/faker";
 
 describe("Cenário 02: Registro de novo usuário na plataforma", () => {
   beforeEach(() => {
-    SignUpPage.visit();
+    cy.visit("https://demo-saas.bugbug.io/");
+    cy.contains("Go to example sign up").click();
+    cy.url().should("include", "/sign-up");
   });
 
   const dataUser = {
@@ -10,24 +13,21 @@ describe("Cenário 02: Registro de novo usuário na plataforma", () => {
     lastname: "Luis",
     email: "miguelluisatf@gmail.com",
     password: "XyzioSCtuq",
+    randomEmail: faker.internet.email(),
   };
 
   it("Caso de Teste 01: Cadastro com todos os dados válidos (Happy Path)", () => {
-    cy.contains("Go to example sign up").click();
-
-    SignUpPage.assertUrlVisible();
     SignUpPage.fillFirstname(dataUser.firstname);
     SignUpPage.fillLastname(dataUser.lastname);
-    SignUpPage.fillEmail(dataUser.email);
+    SignUpPage.fillEmail(dataUser.randomEmail);
     SignUpPage.fillPassword(dataUser.password);
 
     SignUpPage.submit();
+
+    cy.contains("Check your email").should("be.visible");
   });
 
   it("Caso de Teste 02: Cadastro com usuário existente", () => {
-    cy.contains("Go to example sign up").click();
-
-    SignUpPage.assertUrlVisible();
     SignUpPage.fillFirstname(dataUser.firstname);
     SignUpPage.fillLastname(dataUser.lastname);
     SignUpPage.fillEmail(dataUser.email);
@@ -47,9 +47,6 @@ describe("Cenário 02: Registro de novo usuário na plataforma", () => {
   });
 
   it("Caso de Teste 03: Cadastro com firstname errado", () => {
-    cy.contains("Go to example sign up").click();
-
-    SignUpPage.assertUrlVisible();
     SignUpPage.fillLastname(dataUser.lastname);
     SignUpPage.fillEmail(dataUser.email);
     SignUpPage.fillPassword(dataUser.password);
@@ -61,9 +58,6 @@ describe("Cenário 02: Registro de novo usuário na plataforma", () => {
   });
 
   it("Caso de Teste 04: Cadastro com lastname errado", () => {
-    cy.contains("Go to example sign up").click();
-
-    SignUpPage.assertUrlVisible();
     SignUpPage.fillFirstname(dataUser.firstname);
     SignUpPage.fillEmail(dataUser.email);
     SignUpPage.fillPassword(dataUser.password);
@@ -75,9 +69,6 @@ describe("Cenário 02: Registro de novo usuário na plataforma", () => {
   });
 
   it("Caso de Teste 05:Cadastro com email errado", () => {
-    cy.contains("Go to example sign up").click();
-
-    SignUpPage.assertUrlVisible();
     SignUpPage.fillFirstname(dataUser.firstname);
     SignUpPage.fillLastname(dataUser.lastname);
     SignUpPage.fillEmail("migeualemail.c");
@@ -88,9 +79,6 @@ describe("Cenário 02: Registro de novo usuário na plataforma", () => {
   });
 
   it("Caso de Teste 05:Cadastro com senha errada", () => {
-    cy.contains("Go to example sign up").click();
-
-    SignUpPage.assertUrlVisible();
     SignUpPage.fillFirstname(dataUser.firstname);
     SignUpPage.fillLastname(dataUser.lastname);
     SignUpPage.fillEmail(dataUser.email);
@@ -103,8 +91,6 @@ describe("Cenário 02: Registro de novo usuário na plataforma", () => {
   });
 
   it("Caso de Teste 05:Cadastro com campos vazios", () => {
-    cy.contains("Go to example sign up").click();
-
     SignUpPage.submit();
     SignUpPage.assertErrorMessage();
   });

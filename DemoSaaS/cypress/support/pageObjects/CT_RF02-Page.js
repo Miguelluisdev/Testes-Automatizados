@@ -1,9 +1,4 @@
-// cypress/support/pageObjects/LoginPage.js
-
 class SignUpPage {
-  visit() {
-    cy.visit("https://demo-saas.bugbug.io/");
-  }
 
   fillFirstname(firstname) {
    cy.get('input[name="firstName"]').type(firstname);
@@ -23,10 +18,6 @@ class SignUpPage {
 
   submit() {
     cy.get('.mantine-Fieldset-root > .m_6d731127 > .m_77c9d27d').click();
-  }
-
-  assertUrlVisible() {
-    cy.url().should('include' , '/sign-up')
   }
 
   assertErrorMessage() {
