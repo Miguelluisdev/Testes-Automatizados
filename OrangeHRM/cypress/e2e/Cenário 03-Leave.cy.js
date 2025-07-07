@@ -1,18 +1,15 @@
 describe("Cenário Alternativo: Nenhum tipo de licença disponível", () => {
   beforeEach(() => {
-    cy.login(); 
+    cy.login();
     cy.contains("Leave").should("be.visible").click();
     cy.contains("Apply").should("be.visible").click();
     cy.url().should("include", "/leave/applyLeave");
   });
 
- 
-
   it("Deve exibir mensagem informando que não há tipos de licença com saldo disponível", () => {
     cy.contains("No Leave Types with Leave Balance")
       .should("be.visible")
       .and("have.text", "No Leave Types with Leave Balance");
-
 
     cy.get(".oxd-form").should("not.exist");
   });

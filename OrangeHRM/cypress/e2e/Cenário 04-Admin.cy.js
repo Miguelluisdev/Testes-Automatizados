@@ -10,12 +10,6 @@ describe("Cenário 04: Cadastro de novo usuário", () => {
     cy.url().should("include", "/admin/saveSystemUser");
   });
 
-  after(() => {
-    cy.clearCookies();
-    cy.clearLocalStorage();
-    cy.log("🧹 Cookies e Local Storage limpos após todos os testes.");
-  });
-
   it("CT01 - Tentativa de cadastro com todos os campos vazios", () => {
     cy.get('button[type="submit"]').click();
 
