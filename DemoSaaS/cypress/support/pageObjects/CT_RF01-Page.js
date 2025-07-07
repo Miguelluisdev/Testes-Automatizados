@@ -1,8 +1,4 @@
 class LoginPage {
-  visit() {
-    cy.visit("https://demo-saas.bugbug.io/sign-in");
-  }
-
   fillEmail(email) {
     cy.get('input[name="email"]').type(email);
   }
@@ -15,10 +11,6 @@ class LoginPage {
     cy.get(
       ".mantine-Fieldset-root > .m_6d731127 > .m_77c9d27d > .m_80f1301b"
     ).click();
-  }
-
-  assertUrlVisible() {
-    cy.url().should("include", "/sign-in");
   }
 
   assertErrorMessage() {

@@ -1,15 +1,17 @@
 import LoginPage from "../support/pageObjects/CT_RF01-Page";
 
 describe("Cenário 01: Autenticação de Usuário.", () => {
+  beforeEach(() => {
+    cy.visit("https://demo-saas.bugbug.io/sign-in");
+  });
+
   const loginUser = {
     email: "miguelluisatf@gmail.com",
     password: "XyzioSCtuq",
   };
 
   it("Caso de Teste 01: Login com as credenciais válidas (Happy Path)", () => {
-    LoginPage.visit();
-
-    LoginPage.assertUrlVisible();
+    cy.url().should("include", "/sign-in");
     LoginPage.fillEmail(loginUser.email);
     LoginPage.fillPassword(loginUser.password);
     LoginPage.submit();
@@ -21,9 +23,7 @@ describe("Cenário 01: Autenticação de Usuário.", () => {
   });
 
   it("Caso de Teste 02: Login com credenciais de email inválidas (Teste Negativo)", () => {
-    LoginPage.visit();
-
-    LoginPage.assertUrlVisible();
+    cy.url().should("include", "/sign-in");
     LoginPage.fillEmail("miguelmail.c");
     LoginPage.fillPassword(loginUser.password);
     LoginPage.submit();
@@ -32,15 +32,11 @@ describe("Cenário 01: Autenticação de Usuário.", () => {
   });
 
   it("Caso de Teste 03: Login com credenciais de senha inválidas (Teste Negativo)", () => {
-    LoginPage.visit();
-
-    LoginPage.assertUrlVisible();
+    cy.url().should("include", "/sign-in");
     LoginPage.fillEmail(loginUser.email);
     LoginPage.fillPassword("4g4");
     LoginPage.submit();
 
-    cy.contains("Invalid email or password").should(
-      "be.visible"
-    );
+    cy.contains("Invalid email or password").should("be.visible");
   });
 });
