@@ -11,20 +11,16 @@ describe("Cenário 01: Autenticação de Usuário.", () => {
     password: "XyzioSCtuq",
   };
 
-it("Caso de Teste 01: Criar organização com nome válido (Happy Path)", () => {
-  cy.get(
-    '.mantine-visible-from-md > [data-testid="organization-picker"]'
-  ).click();
+  it("Caso de Teste 01: Login com as credenciais válidas (Happy Path)", () => {
+    LoginPage.fillEmail(loginUser.email);
+    LoginPage.fillPassword(loginUser.password);
+    LoginPage.submit();
 
-  cy.contains("Create organization").should("be.visible").click();
-
-  cy.url().should("include", "/create-organization"); 
-
-  OrganizationPage.button();
-  OrganizationPage.fillName(nomeOrg);
-  OrganizationPage.createButton();
-});
-
+    cy.get('[data-testid="user-settings"] > p').should(
+      "have.text",
+      "Miguel Luis"
+    );
+  });
 
   it("Caso de Teste 02: Login com credenciais de email inválidas (Teste Negativo)", () => {
     LoginPage.fillEmail("miguelmail.c");
