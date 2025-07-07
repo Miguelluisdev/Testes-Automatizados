@@ -11,16 +11,6 @@ class OrganizationPage {
     cy.get(".m_e615b15f").should("be.visible");
   }
 
-  urlDashboard() {
-    cy.url().should("include", "/onboarding");
-  }
-
-  urlCreateOrg() {
-    cy.url().should("include", "/create-organization");
-  }
-
-  
-
   createButton() {
     cy.get(".m_811560b9").click();
   }
