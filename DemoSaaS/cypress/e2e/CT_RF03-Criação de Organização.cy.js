@@ -2,13 +2,12 @@ import OrganizationPage from "../support/pageObjects/CT_RF03-Page";
 import { faker } from "@faker-js/faker";
 
 describe("Cenário 03: Criação de uma organização após o cadastro", () => {
-  const nomeOrg = faker.company.name();
-
   beforeEach(() => {
     cy.login();
   });
 
-  //  criar um mock de dados para criar as organizações
+  const nomeOrg = faker.company.name();
+
   it("Caso de Teste 01: Criar organização com nome válido (Happy Path)", () => {
     cy.get(
       '.mantine-visible-from-md > [data-testid="organization-picker"]'
