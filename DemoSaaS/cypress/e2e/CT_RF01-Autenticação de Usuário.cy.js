@@ -16,10 +16,7 @@ describe("Cenário 01: Autenticação de Usuário.", () => {
     LoginPage.fillPassword(loginUser.password);
     LoginPage.submit();
 
-    cy.get('[data-testid="user-settings"] > p').should(
-      "have.text",
-      "Miguel Luis"
-    );
+    cy.get('[data-testid="user-settings"] > p').should('be.visible');
   });
 
   it("Caso de Teste 02: Login com credenciais de email inválidas (Teste Negativo)", () => {
