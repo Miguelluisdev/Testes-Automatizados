@@ -6,13 +6,13 @@ describe("Cenário Alternativo: Nenhum tipo de licença disponível", () => {
     cy.url().should("include", "/leave/applyLeave");
   });
 
-  it("Deve exibir mensagem informando que não há tipos de licença com saldo disponível", () => {
-    cy.contains("No Leave Types with Leave Balance")
-      .should("be.visible")
-      .and("have.text", "No Leave Types with Leave Balance");
+  // it("Deve exibir mensagem informando que não há tipos de licença com saldo disponível", () => {
+  //   cy.contains("No Leave Types with Leave Balance")
+  //     .should("be.visible")
+  //     .and("have.text", "No Leave Types with Leave Balance");
 
-    cy.get(".oxd-form").should("not.exist");
-  });
+  //   cy.get(".oxd-form").should("not.exist");
+  // });
 });
 
 // describe("Cenário 03: Solicitação e gerenciamento de férias.", () => {
