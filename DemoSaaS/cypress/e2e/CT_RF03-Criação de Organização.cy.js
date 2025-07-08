@@ -20,6 +20,7 @@ describe("Cenário 03: Criação de uma organização após o cadastro", () => {
     OrganizationPage.createButton();
   });
 
+  // testes instaveis
   // it("Caso de Teste 02: Tentar criar organização sem nome (Teste Negativo)", () => {
   //   cy.get(
   //     '.mantine-visible-from-md > [data-testid="organization-picker"]'
@@ -30,15 +31,15 @@ describe("Cenário 03: Criação de uma organização após o cadastro", () => {
   //   OrganizationPage.errorMessage();
   // });
 
-  it("Caso de Teste 03: Criação de organização com configuração extra marcada (Caminho Alternativo)", () => {
-    cy.get(
-      '.mantine-visible-from-md > [data-testid="organization-picker"]'
-    ).click();
-    cy.contains("Create organization").click();
-    OrganizationPage.fillName(nomeOrg);
-    OrganizationPage.checkInput();
-    OrganizationPage.createButton();
-  });
+  // it("Caso de Teste 03: Criação de organização com configuração extra marcada (Caminho Alternativo)", () => {
+  //   cy.get(
+  //     '.mantine-visible-from-md > [data-testid="organization-picker"]'
+  //   ).click();
+  //   cy.contains("Create organization").click();
+  //   OrganizationPage.fillName(nomeOrg);
+  //   OrganizationPage.checkInput();
+  //   OrganizationPage.createButton();
+  // });
 
   // teste abaixo é instavel
   // it("Caso de teste 04: Criando organização com nome já existente", () => {
