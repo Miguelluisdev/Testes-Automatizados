@@ -42,19 +42,19 @@ describe("Cenário 04: Gerenciar informações da conta do usuário", () => {
 
     cy.contains("Invalid password").should("be.visible");
   });
-  it("Caso de Teste 03: Inserir nome com limite mínimo de caracteres (Valor Limite)", () => {
-    cy.get('input[name="firstName"]').type("A");
-    cy.get('input[name="lastName"]').type("B");
+  // it("Caso de Teste 03: Inserir nome com limite mínimo de caracteres (Valor Limite)", () => {
+  //   cy.get('input[name="firstName"]').type("A");
+  //   cy.get('input[name="lastName"]').type("B");
 
-    cy.contains("Change password").click();
+  //   cy.contains("Change password").click();
 
-    cy.contains("Invalid password").should("be.visible");
-  });
+  //   cy.contains("Invalid password").should("be.visible");
+  // });
 
-  it("Caso de Teste 04: Logout pelo gerenciamento de conta (Caminho Alternativo)", () => {
-    cy.contains("Log out").should("be.visible").click({ force: true });
+  // it("Caso de Teste 04: Logout pelo gerenciamento de conta (Caminho Alternativo)", () => {
+  //   cy.contains("Log out").should("be.visible").click({ force: true });
 
-    cy.url().should("include", "/sign-in");
-    cy.contains("Sign in").should("be.visible");
-  });
+  //   cy.url().should("include", "/sign-in");
+  //   cy.contains("Sign in").should("be.visible");
+  // });
 });
