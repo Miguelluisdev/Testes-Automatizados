@@ -1,5 +1,4 @@
-
-## ⚙️ **Documentação de CI/CD – DemoSaaS Testes Automatizados**
+## ⚙️ **Documentação de CI/CD – SwagLabs Testes Automatizados**
 
 ### 📌 1. **Objetivo do CI/CD**
 
@@ -28,16 +27,12 @@ O arquivo principal do pipeline está localizado em:
 ### 🧱 4. **Conteúdo do `cypress-tests.yml`**
 
 ```yaml
-name: End-to-end tests
-on: push
-
-jobs:
-  orangehrm-tests:
-    name: OrangeHRM - Cypress Tests
+  swaglabs-tests:
+    name: SwagLabs - Cypress Tests
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: OrangeHRM
+        working-directory: SwagLabs
 
     steps:
       - uses: actions/checkout@v3
@@ -50,33 +45,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress tests for OrangeHRM
+      - name: Run Cypress tests for SwagLabs
         uses: cypress-io/github-action@v6
         with:
-          working-directory: OrangeHRM
-
-  demosaas-tests:
-    name: Demo SaaS - Cypress Tests
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: DemoSaaS
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress tests for Demo SaaS
-        uses: cypress-io/github-action@v6
-        with:
-          working-directory: DemoSaaS
+          working-directory: SwagLabs
 
 ```
 
