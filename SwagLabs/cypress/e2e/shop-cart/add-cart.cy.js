@@ -4,17 +4,7 @@ describe("Cenario 02: adicionar os produtos ao carrinho", () => {
   });
 
   it("adicionar produto ao carrinho", () => {
-    cy.get(":nth-child(1) > .pricebar > .btn_primary").click();
-
-    cy.get(".btn_secondary").should("be.visible");
-    cy.get(".shopping_cart_badge").should("be.visible").and("have.text", "1");
-
-    cy.get('a[href="./cart.html"]').should("be.visible").click();
-
-    cy.contains("Sauce Labs Backpack").should(
-      "have.text",
-      "Sauce Labs Backpack"
-    );
+    cy.addCart();
   });
 
   it("adicionar mais de um produto ao carrinho", () => {
