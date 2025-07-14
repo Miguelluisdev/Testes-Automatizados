@@ -1,1 +1,0 @@
-// Caso de Teste 05: Registro com dados válidos
