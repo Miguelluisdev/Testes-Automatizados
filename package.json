@@ -27,7 +27,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.2.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "@shelex/cypress-allure-plugin": "^2.41.2",
     "cypress": "^14.5.0",
-    "cypress-plugin-retries": "^1.5.2"
+    "cypress-plugin-retries": "^1.5.2",
+    "esbuild": "^0.25.6"
   }
 }
