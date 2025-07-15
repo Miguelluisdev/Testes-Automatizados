@@ -1,13 +1,18 @@
-import { nome, cpf, email, whatsapp } from "../support/selectors/cadastro";
+import {
+  nome,
+  cpf,
+  email,
+  whatsapp,
+  cep,
+  adress_complement,
+  adress_number,
+} from "../support/selectors/cadastro";
+import { mensagensObrigatorias } from "../support/selectors/required-messages";
 import { faker } from "@faker-js/faker";
 
 describe("Cenario 01: Cadastre-se para fazer entregas", () => {
   beforeEach(() => {
-    cy.visit("https://buger-eats-qa.vercel.app/");
-    cy.contains("a", "Cadastre-se para fazer entregas")
-      .should("be.visible")
-      .click();
-    cy.url().should("include", "/deliver");
+    cy.entrarNoSite();
   });
 
   it("Cadastre-se para fazer entregas", () => {
@@ -26,13 +31,22 @@ describe("Cenario 01: Cadastre-se para fazer entregas", () => {
     cy.get(whatsapp)
       .type(usuario.whatsappFake)
       .should("have.value", usuario.whatsappFake);
+
+    cy.get(cep).should("be.visible").type("23090-720");
+    cy.get(adress_number).should("be.visible").type("00");
+    cy.get(adress_complement).should("be.visible").type("Casa 1");
+    cy.get(":nth-child(3) > :nth-child(2) > :nth-child(2) > input").click();
+
+    cy.contains("Moto").should("be.visible").click();
+
+    cy.UploadFile();
+    cy.enviarFormulario();
   });
 
   it("Validar campos obrigatórios", () => {
-    cy.get(nome).should("be.visible").and("have.value", "");
-    cy.get(cpf).should("be.visible").and("have.value", "");
-    cy.get(email).should("be.visible").and("have.value", "");
-    cy.get(whatsapp).should("be.visible").and("have.value", "");
-    cy.get(".button-success").should('be.visible').click();
+    cy.get(".button-success").should("be.visible").click();
+    Object.values(mensagensObrigatorias).forEach((mensagem) => {
+      cy.contains(mensagem).should("be.visible");
+    });
   });
 });
