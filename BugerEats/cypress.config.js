@@ -14,5 +14,7 @@ module.exports = defineConfig({
       allureWriter(on, config);
       return config;
     },
+    specPattern: ["cypress/e2e/**/*.feature", "cypress/e2e/**/*.cy.{js,ts}"],
+    supportFile: "cypress/support/e2e.js",
   },
 });
