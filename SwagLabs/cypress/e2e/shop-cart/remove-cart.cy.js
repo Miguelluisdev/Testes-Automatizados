@@ -1,6 +1,7 @@
 describe("Cenario 03: removendo produto do carrinho", () => {
   beforeEach(() => {
     cy.login();
+    cy.visit("https://www.saucedemo.com/v1/inventory.html");
   });
 
   it("Removendo um produto do carrinho", () => {

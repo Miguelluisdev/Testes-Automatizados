@@ -1,6 +1,7 @@
 describe("Cenario 02: adicionar os produtos ao carrinho", () => {
   beforeEach(() => {
     cy.login();
+    cy.visit("https://www.saucedemo.com/v1/inventory.html");
   });
 
   it("adicionar produto ao carrinho", () => {

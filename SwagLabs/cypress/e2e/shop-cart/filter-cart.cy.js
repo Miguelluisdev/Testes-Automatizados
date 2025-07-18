@@ -1,6 +1,7 @@
 describe("Cenario: 04 ", () => {
   beforeEach(() => {
     cy.login();
+    cy.visit("https://www.saucedemo.com/v1/inventory.html");
   });
 
   it("Seleciona ordenação de produtos de Z a A", () => {

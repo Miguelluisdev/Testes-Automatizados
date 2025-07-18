@@ -1,11 +1,38 @@
-Cypress.Commands.add("login", () => {
-  cy.visit("https://www.saucedemo.com/v1/");
-  cy.get('[data-test="username"]').type("standard_user");
-  cy.get('[data-test="password"]').type("secret_sauce");
-  cy.get("#login-button").click();
-  cy.get(".product_label").should("be.visible");
-  cy.log("login com dados validos (happy path)");
-});
+// fora do bloco de comando
+function swagLabsLogin(user, password) {
+  cy.visit("https://www.saucedemo.com/");
+  cy.get('[data-test="username"]').type(user);
+  cy.get('[data-test="password"]').type(password, { log: false });
+  cy.get('[data-test="login-button"]').click();
+  cy.get(".inventory_list").should("be.visible");
+}
+
+function validateSwagLabsLogin() {
+  cy.visit("https://www.saucedemo.com/v1/inventory.html");
+  cy.get(".inventory_list").should("be.visible");
+}
+
+Cypress.Commands.add(
+  "login",
+  (
+    user = "standard_user",
+    password = "secret_sauce",
+    { cacheSession = true } = {}
+  ) => {
+    const options = {
+      cacheAcrossSpecs: true,
+      validate: () => validateSwagLabsLogin(),
+    };
+
+    if (cacheSession) {
+      cy.session(user, () => swagLabsLogin(user, password), options);
+    } else {
+      swagLabsLogin(user, password);
+    }
+  }
+);
+
+
 
 Cypress.Commands.add("addCart", () => {
   cy.get(":nth-child(1) > .pricebar > .btn_primary").click();

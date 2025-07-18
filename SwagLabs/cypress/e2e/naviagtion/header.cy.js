@@ -1,6 +1,7 @@
 describe("Cenario 05: navegação do header menu", () => {
   beforeEach(() => {
     cy.login();
+    cy.visit("https://www.saucedemo.com/v1/inventory.html");
   });
   it("Navegando nos links do header", () => {
     cy.get(".bm-burger-button > button").click();

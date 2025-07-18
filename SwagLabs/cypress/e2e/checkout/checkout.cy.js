@@ -1,6 +1,7 @@
 describe("Cenario 07: Checkout de compra", () => {
   beforeEach(() => {
     cy.login();
+    cy.visit("https://www.saucedemo.com/v1/inventory.html");
   });
   it("realizando compra do produto com sucesso", () => {
     cy.addCart();
