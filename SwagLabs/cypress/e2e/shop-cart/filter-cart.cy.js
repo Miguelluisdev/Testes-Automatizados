@@ -1,4 +1,4 @@
-describe("Cenario: 04 ", () => {
+describe("Cenario: 04 filtrando os produtos do carrinho ", () => {
   beforeEach(() => {
     cy.login();
     cy.visit("https://www.saucedemo.com/v1/inventory.html");
