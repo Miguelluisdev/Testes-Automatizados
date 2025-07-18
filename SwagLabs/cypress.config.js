@@ -1,8 +1,9 @@
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
-const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
-const createEsbuildPlugin = require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
-const allureWriter = require("@shelex/cypress-allure-plugin/writer");
+const addCucumberPreprocessorPlugin =
+  require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
+const createEsbuildPlugin =
+  require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
 const fs = require("fs-extra");
 require("dotenv").config();
 
@@ -22,12 +23,12 @@ module.exports = defineConfig({
       await addCucumberPreprocessorPlugin(on, config);
 
       // ✅ Esbuild para interpretar arquivos .feature
-      on("file:preprocessor", createBundler({
-        plugins: [createEsbuildPlugin(config)],
-      }));
-
-      // ✅ Plugin Allure
-      allureWriter(on, config);
+      on(
+        "file:preprocessor",
+        createBundler({
+          plugins: [createEsbuildPlugin(config)],
+        })
+      );
 
       // ✅ Limpeza de sessões antes de rodar os testes
       on("before:run", () => {
