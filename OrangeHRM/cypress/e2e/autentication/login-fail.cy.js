@@ -1,15 +1,6 @@
 describe("Cenário 01: Login na plataforma", () => {
   beforeEach(() => {
-    cy.visit(
-      "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
-    );
-  });
-
-  it("Login com as credenciais válidas.", () => {
-    cy.get('input[name="username"]').type("Admin");
-    cy.get('input[name="password"]').type("admin123");
-    cy.get(".orangehrm-login-button").click();
-    cy.contains("Dashboard").should("be.visible");
+    cy.visit("/web/index.php/auth/login");
   });
 
   it("Tentativa de login com senha incorreta", () => {

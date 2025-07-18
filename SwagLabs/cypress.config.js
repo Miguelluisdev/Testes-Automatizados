@@ -19,10 +19,8 @@ module.exports = defineConfig({
     supportFile: "cypress/support/e2e.js",
 
     async setupNodeEvents(on, config) {
-      // ✅ Plugin do Cucumber
       await addCucumberPreprocessorPlugin(on, config);
 
-      // ✅ Esbuild para interpretar arquivos .feature
       on(
         "file:preprocessor",
         createBundler({
@@ -30,7 +28,6 @@ module.exports = defineConfig({
         })
       );
 
-      // ✅ Limpeza de sessões antes de rodar os testes
       on("before:run", () => {
         fs.emptyDirSync("cypress/sessions");
       });

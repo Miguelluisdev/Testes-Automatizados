@@ -1,11 +1,8 @@
-describe("Cenário 04: Cadastro de novo usuário", () => {
+describe("Cenário de Falha: Cadastro de novo usuário", () => {
   beforeEach(() => {
     cy.login();
-
-    cy.visit(
-      "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers"
-    );
-
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
     cy.contains("Add").click();
     cy.url().should("include", "/admin/saveSystemUser");
   });

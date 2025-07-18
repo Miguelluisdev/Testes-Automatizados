@@ -1,4 +1,4 @@
-// fora do bloco de comando
+
 function swagLabsLogin(user, password) {
   cy.visit("https://www.saucedemo.com/");
   cy.get('[data-test="username"]').type(user);
