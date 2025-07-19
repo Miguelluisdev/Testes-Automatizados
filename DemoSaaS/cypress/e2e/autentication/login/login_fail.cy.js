@@ -14,7 +14,6 @@ describe("Cenário de Falha: Autenticação de Usuário", () => {
 
   it("CT03 - Login com senha inválida", () => {
     cy.get('input[name="email"]').type("miguelluisatf@gmail.com");
-    cy.get('input[name="password"]').type("4g4", { log: false });
     cy.get(".mantine-Fieldset-root > .m_6d731127 > .m_77c9d27d").click();
 
     cy.contains("Invalid email or password").should("be.visible");
