@@ -3,8 +3,8 @@ name: End-to-end tests
 on:
   push:
   schedule:
-    - cron: "0 6 * * *" 
-  workflow_dispatch: 
+    - cron: "0 6 * * *"
+  workflow_dispatch:
 
 jobs:
   orangehrm-tests:
@@ -29,29 +29,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: OrangeHRM
-
-  demosaas-tests:
-    name: Demo SaaS - Cypress Tests
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: DemoSaaS
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Cypress tests for Demo SaaS
-        uses: cypress-io/github-action@v6
-        with:
-          working-directory: DemoSaaS
 
   swaglabs-tests:
     name: SwagLabs - Cypress Tests
