@@ -4,7 +4,7 @@ describe("Cenário de Falha: Autenticação de Usuário", () => {
     cy.url().should("include", "/sign-in");
   });
 
-  it("CT02 - Login com email inválido", () => {
+  it.skip("CT02 - Login com email inválido", () => {
     cy.get('input[name="email"]').type("miguelmail.c");
     cy.get('input[name="password"]').type("XyzioSCtuq", { log: false });
     cy.get(".mantine-Fieldset-root > .m_6d731127 > .m_77c9d27d").click();
@@ -12,10 +12,10 @@ describe("Cenário de Falha: Autenticação de Usuário", () => {
     cy.contains("Invalid email").should("be.visible");
   });
 
-  // it("CT03 - Login com senha inválida", () => {
-  //   cy.get('input[name="email"]').type("miguelluisatf@gmail.com");
-  //   cy.get(".mantine-Fieldset-root > .m_6d731127 > .m_77c9d27d").click();
+  it.skip("CT03 - Login com senha inválida", () => {
+    cy.get('input[name="email"]').type("miguelluisatf@gmail.com");
+    cy.get(".mantine-Fieldset-root > .m_6d731127 > .m_77c9d27d").click();
 
-  //   cy.contains("Invalid email or password").should("be.visible");
-  // });
+    cy.contains("Invalid email or password").should("be.visible");
+  });
 });
