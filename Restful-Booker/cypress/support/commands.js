@@ -1,8 +1,8 @@
 Cypress.Commands.add("login", () => {
-    cy.visit("https://bookcart.azurewebsites.net/login");
-    cy.get("#mat-input-0").should("be.visible").type("ML");
-    cy.get("#mat-input-1").should("be.visible").type("SenhaForte1");
-    cy.get(".mat-mdc-card-actions > .mdc-button > .mdc-button__label").click();
+  cy.visit("https://bookcart.azurewebsites.net/login");
+  cy.get("#mat-input-0").should("be.visible").type("ML");
+  cy.get("#mat-input-1").should("be.visible").type("SenhaForte1");
+  cy.get(".mat-mdc-card-actions > .mdc-button > .mdc-button__label").click();
 });
 
 Cypress.Commands.add("toggleIcon", () => {
@@ -19,3 +19,10 @@ Cypress.Commands.add("toggleIcon", () => {
 
   cy.get("#mat-input-1").should("have.attr", "type", "password");
 });
+
+Cypress.Commands.add("clearCart", () => {
+  cy.intercept("DELETE", "/api/shoppingcart/11117/2").as("deleteCart");
+  cy.get(".mat-mdc-tooltip-trigger > .mat-icon").click();
+  cy.wait("@deleteCart").its("response.statusCode").should("eq", 200);
+});
+
