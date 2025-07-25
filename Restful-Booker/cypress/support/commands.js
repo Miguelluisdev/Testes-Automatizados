@@ -26,3 +26,12 @@ Cypress.Commands.add("clearCart", () => {
   cy.wait("@deleteCart").its("response.statusCode").should("eq", 200);
 });
 
+Cypress.Commands.add("addCart", () => {
+  cy.visit("/");
+  cy.intercept("POST", "**/api/shoppingcart/addToCart/11117/**").as(
+    "addToCart"
+  );
+  cy.contains("Harry Potter and the Chamber").should("be.visible");
+  cy.contains("button", "Add to Cart").should("be.visible").click();
+  cy.wait("@addToCart").its("response.statusCode").should("eq", 200);
+});
