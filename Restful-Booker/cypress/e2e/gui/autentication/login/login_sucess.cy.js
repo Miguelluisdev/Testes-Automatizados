@@ -1,6 +1,6 @@
 describe('Login Success Test', () => {
   beforeEach(() => {
-    cy.visit('https://bookcart.azurewebsites.net/login')
+    cy.visit('/login')
     cy.intercept('POST', '/api/login').as('postLogin');
   })
   it('o usuario deve ser capaz preencher o formulario com os dados corretos e entrar no site' , () => {
