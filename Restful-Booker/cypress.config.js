@@ -8,6 +8,7 @@ const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 
 module.exports = defineConfig({
   e2e: {
+    chromeWebSecurity: false,
     baseUrl: "https://bookcart.azurewebsites.net/",
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);
