@@ -2,7 +2,7 @@ import { campos } from "../../../../support/selectors/register-form-selectors";
 
 describe("Cenario 01: Registro de usuário com sucesso", () => {
   beforeEach(() => {
-    cy.visit("https://bookcart.azurewebsites.net/register");
+    cy.visit("/register");
 
     const usernameCampo = campos.find((c) => c.selector === "#mat-input-2");
 
