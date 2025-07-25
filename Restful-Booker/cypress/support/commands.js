@@ -1,25 +1,23 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("login", () => {
+  it("o usuario deve ser capaz preencher o formulario com os dados corretos e entrar no site", () => {
+    cy.visit("https://bookcart.azurewebsites.net/login");
+    cy.get("#mat-input-0").should("be.visible").type("ML");
+    cy.get("#mat-input-1").should("be.visible").type("SenhaForte1");
+    cy.get(".mat-mdc-card-actions > .mdc-button > .mdc-button__label").click();
+  });
+});
+
+Cypress.Commands.add("toggleIcon", () => {
+  cy.get("#mat-input-1")
+    .should("be.visible")
+    .should("have.attr", "type", "password")
+    .type("SenhaForte1");
+
+  cy.get(".mat-mdc-form-field-icon-suffix > .mat-icon").click();
+
+  cy.get("#mat-input-1").should("have.attr", "type", "text");
+
+  cy.get(".mat-mdc-form-field-icon-suffix > .mat-icon").click();
+
+  cy.get("#mat-input-1").should("have.attr", "type", "password");
+});

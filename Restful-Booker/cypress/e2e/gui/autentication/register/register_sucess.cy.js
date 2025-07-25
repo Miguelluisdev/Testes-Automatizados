@@ -1,19 +1,27 @@
+import { campos } from "../../../../support/selectors/register-form-selectors";
+
 describe("Cenario 01: Registro de usuário com sucesso", () => {
   beforeEach(() => {
     cy.visit("https://bookcart.azurewebsites.net/register");
-    cy.contains('User Registration').should('be.visible');
+
+    const usernameCampo = campos.find((c) => c.selector === "#mat-input-2");
+
+    cy.intercept(
+      "GET",
+      new RegExp(`/api/user/validateUserName/${usernameCampo.valor}`)
+    ).as("getUserNameValidation");
   });
-  
+
   it("O usuario deve ser capaz de se registrar com sucesso", () => {
-    cy.get("#mat-input-0").should("be.visible").type("Miguel");
-    cy.get("#mat-input-1").should("be.visible").type("Luis");
-    cy.get("#mat-input-2").should("be.visible").type("ML");
-    cy.get('#mat-input-3').should("be.visible").type("SenhaForte1");
-    cy.get('#mat-input-4').should("be.visible").type("SenhaForte1");
+    campos.forEach((campo) => {
+      cy.get(campo.selector).should("be.visible").type(campo.valor);
+    });
 
-    cy.contains('Male').should("be.visible").click();
+    cy.contains("Male").should("be.visible").click();
+    cy.contains("button", "Register").click();
 
-   cy.get('.mat-mdc-card-actions > .mdc-button').click();
+    cy.wait("@getUserNameValidation")
+      .its("response.statusCode")
+      .should("eq", 200);
   });
-
 });
