@@ -19,8 +19,8 @@ context("Verificação das Requisições após Login", () => {
   });
 
   it("deve verificar todas as requisições da API após o login", () => {
-    cy.get("#mat-input-0").should("be.visible").type("ML");
-    cy.get("#mat-input-1").should("be.visible").type("SenhaForte1");
+    cy.get("#mat-input-0").should("be.visible").type(Cypress.env('username'));
+    cy.get("#mat-input-1").should("be.visible").type(Cypress.env('password'));
     cy.get(".mat-mdc-card-actions > .mdc-button > .mdc-button__label").click();
 
     cy.wait("@postLogin").its("response.statusCode").should("eq", 200);
