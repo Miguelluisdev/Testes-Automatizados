@@ -1,7 +1,3 @@
-Perfeito — adicionei uma seção detalhada de **Instalação & Solução de Problemas** para colar no README do seu repositório. Incluí pré-requisitos, passo a passo, variáveis úteis, erros comuns com soluções e um exemplo de workflow do GitHub Actions. Usei as fontes oficiais do Cypress e Node.js para garantir que as recomendações de versão e os comandos estejam atualizados. Segue o conteúdo pronto para colar no README (em português):
-
----
-
 ## 🛠️ Instalação (detalhada) & Solução de Problemas
 
 ### ✅ Pré-requisitos
@@ -188,22 +184,3 @@ jobs:
 * Adicione scripts no `package.json` (ex.: `"cy:open": "cypress open"`, `"test:e2e": "cypress run"`).
 * Versione o `cypress.config.*` por projeto (cada subpasta tem seu config).
 * Documente no README de cada subprojeto qualquer requisito extra (porta, variáveis de ambiente, seed data).
-
----
-
-Se quiser, eu já posso:
-
-* inserir essa seção diretamente no README (faço a alteração formatada pronto para commit),
-* gerar um `README_SETUP.md` separado com essa seção,
-* ou criar um exemplo de `.github/workflows/cypress.yml` mais avançado (cache do cypress, parallel, reporter, upload de vídeo/artifacts).
-
-Qual opção prefere que eu aplique agora?
-
-[1]: https://docs.cypress.io/app/references/migration-guide?utm_source=chatgpt.com "Migration Guide - Cypress Documentation"
-[2]: https://docs.cypress.io/app/get-started/install-cypress?utm_source=chatgpt.com "Install using npm, Yarn, or pnpm - Cypress Documentation"
-[3]: https://docs.cypress.io/app/references/advanced-installation?utm_source=chatgpt.com "Advanced Installation Instructions for Cypress"
-[4]: https://docs.cypress.io/app/references/troubleshooting?utm_source=chatgpt.com "Troubleshooting Cypress App"
-[5]: https://github.com/cypress-io/cypress/discussions/29912?utm_source=chatgpt.com "Webkit not found · cypress-io cypress · Discussion #29912 - GitHub"
-[6]: https://docs.cypress.io/app/continuous-integration/github-actions?utm_source=chatgpt.com "Run Cypress tests in GitHub Actions: A Step-by-Step Guide"
-[7]: https://github.com/cypress-io/github-action?utm_source=chatgpt.com "GitHub Action for running Cypress end-to-end & component tests"
-[8]: https://nodejs.org/en/about/previous-releases?utm_source=chatgpt.com "Node.js Releases"
